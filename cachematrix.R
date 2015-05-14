@@ -1,10 +1,18 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Doing long memory intensive calculations is costly so we cache them and use them as needed
 
-## Write a short comment describing this function
+
+## This puts a matrix in cached memory for later retreval.
 
 makeCacheMatrix <- function(x = matrix()) {
-
+        inv <- NULL
+                set <- function(y) {
+                x <<- y
+                inv <<- NULL
+        }
+  get <- function() x
+  setinverse <- function(inverse) inv <<- inverse
+  getinverse <- function() inv
+  list(set=set, get=get, setinverse=setinverse, getinverse=getinverse)
 }
 
 
